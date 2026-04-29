@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chattie Project</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background:#f5f5f5;
+  color:#111;
+  cursor:none;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 900px;
+  margin:auto;
+  padding:60px 40px;
+}
+
+/* NAVBAR (SAMA PERSIS INDEX) */
+.navbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:60px;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(12px);
+  padding:12px 24px;
+  border-radius:999px;
+  max-width:780px;
+  position: sticky;
+  top:20px;
+  z-index:10;
+}
+
+.nav-right {
+  display:flex;
+  gap:28px;
+}
+
+.nav-right a {
+  text-decoration:none;
+  color:#111;
+  font-size:14px;
+  position:relative;
+}
+
+.nav-right a::after {
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-4px;
+  width:0%;
+  height:1px;
+  background:#111;
+  transition:0.3s;
+}
+
+.nav-right a:hover::after {
+  width:100%;
+}
+
+/* BACK */
+.back {
+  display:inline-block;
+  font-size:14px;
+  margin-bottom:40px;
+  text-decoration:none;
+  color:#111;
+  opacity:0.6;
+}
+
+.back:hover { opacity:1; }
+
+/* SECTION */
+.section {
+  margin-bottom:100px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  padding-top:30px;
+  border-top:1px solid #ddd;
+
+  opacity:0;
+  transform: translateY(60px);
+  transition: all 0.8s ease;
+}
+
+.section.show {
+  opacity:1;
+  transform: translateY(0);
+}
+
+/* HERO */
+.project-hero {
+  display:flex;
+  gap:30px;
+  align-items:center;
+}
+
+.project-img {
+  width:180px;
+  height:180px;
+  object-fit:cover;
+  border-radius:20px;
+}
+
+.project-info div {
+  font-size:14px;
+  color:#555;
+}
+
+/* TITLE */
+.title {
+  font-size:28px;
+  font-weight:600;
+}
+
+/* TEXT */
+.text {
+  max-width:520px;
+  font-size:14px;
+  color:#555;
+  line-height:1.6;
+}
+
+/* IMAGE */
+.main-img {
+  width:70%;
+  max-width:520px;
+  display:block;
+  margin:20px auto 0;
+  border-radius:16px;
+}
+
+/* FEATURES */
+.features {
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:16px;
+}
+
+.feature-card {
+  position:relative;
+  border-radius:16px;
+  overflow:hidden;
+}
+
+.feature-card img {
+  width:100%;
+  display:block;
+  border-radius:16px;
+  transition:0.4s;
+}
+
+.feature-card:hover img {
+  transform: scale(1.05);
+}
+
+/* POPUP */
+.feature-popup {
+  position:absolute;
+  bottom:20px;
+  left:20px;
+  right:20px;
+
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+
+  padding:14px;
+  border-radius:12px;
+
+  font-size:13px;
+  color:#333;
+  line-height:1.5;
+
+  opacity:0;
+  transform: translateY(20px);
+  transition:0.3s;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.feature-card:hover .feature-popup {
+  opacity:1;
+  transform: translateY(0);
+}
+
+.feature-popup strong {
+  display:block;
+  margin-bottom:4px;
+  font-size:14px;
+}
+
+/* CURSOR (SAMA INDEX) */
+.cursor {
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:#111;
+
+  position:fixed;
+  pointer-events:none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease;
+
+  z-index:999;
+}
+
+.cursor-grow {
+  transform: translate(-50%, -50%) scale(2);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .features {
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="cursor"></div>
+
+<div class="container">
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <div>Portfolio</div>
+  <div class="nav-right">
+    <a href="index.html">Home</a>
+    <a href="index.html#work">Work</a>
+    <a href="index.html#education">Education</a>
+    <a href="index.html#experience">Experience</a>
+  </div>
+</div>
+
+<!-- BACK -->
+<a href="index.html" class="back">← Back</a>
+
+<!-- HERO -->
+<div class="section" style="border-top:none; padding-top:0;">
+  <div class="project-hero">
+    <img src="image/Chattiee.jpg" class="project-img">
+    <div class="project-info">
+      <div>🏆 Finalist Hackathon UC 2026</div>
+      <div>March 2026 – April 2026</div>
+      <div>UI/UX Design</div>
+      <div>Mobile App</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT IS -->
+<div class="section">
+  <div class="title">What is Chattie?</div>
+  <div class="text">
+    Chattie is a mobile application designed to help users communicate more effectively while supporting emotional well-being through thoughtful and user-friendly features.
+  </div>
+  <img src="image/Chatttie.jpg" class="main-img">
+</div>
+
+<!-- FEATURES -->
+<div class="section">
+  <div class="title">Features</div>
+  <div class="text">
+    Some of the key features designed to support user interaction and emotional well-being.
+  </div>
+
+  <div class="features">
+
+    <div class="feature-card">
+      <img src="image/Anonymous-Chat.jpg">
+      <div class="feature-popup">
+        <strong>Anonymous Chat</strong>
+        A safe space where users can freely express thoughts and emotions anonymously, helping them feel heard without pressure or judgment.
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <img src="image/psy-chat.jpg">
+      <div class="feature-popup">
+        <strong>Psychologist Chat</strong>
+        Provides direct access to professional support, allowing users to talk with experts and receive guidance in a more approachable way.
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <img src="image/journal.jpg">
+      <div class="feature-popup">
+        <strong>Chattie Journal</strong>
+        Helps users reflect on daily experiences, track emotions, and build healthier mental habits through simple journaling.
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <img src="image/chattie-learning.jpg">
+      <div class="feature-popup">
+        <strong>Chattie Learning</strong>
+        Offers curated self-development content to help users understand their emotions and grow in a more mindful way.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<script>
+/* CURSOR */
+const cursor = document.querySelector('.cursor');
+
+document.addEventListener('mousemove', e => {
+  cursor.style.top = e.clientY + 'px';
+  cursor.style.left = e.clientX + 'px';
+});
+
+document.querySelectorAll('a, img, .feature-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('cursor-grow'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-grow'));
+});
+
+/* SCROLL */
+const sections = document.querySelectorAll('.section');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.2 });
+
+sections.forEach(section => observer.observe(section));
+</script>
+
+</body>
+</html>
